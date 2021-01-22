@@ -14,7 +14,7 @@ server {
          try_files $uri =404;
          fastcgi_split_path_info  ^(.+\.php)(/.+)$;
          fastcgi_index            index.php;
-         fastcgi_pass             01people-base-laravel-app:9000;
+         fastcgi_pass             api:9000;
          include                  fastcgi_params;
          fastcgi_param   REQUEST_URI $request_uri;
          fastcgi_param   PATH_INFO       $fastcgi_path_info;
