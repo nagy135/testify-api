@@ -14,7 +14,8 @@ laravel/php8
 #### foreign keys
 + class_id
 
-### Class
+### CClass
+CClass because Class is reserved
 + id
 + name (varchar)
 
@@ -32,8 +33,11 @@ laravel/php8
 Is created when teacher gives test to student, waiting for his state change
 + id
 + state (string: pending, done, result)
-+ result (integer)
-+ deadline (timestamp)
++ score (integer)
++ deadline (datetime)
++ started_at (datetime)
++ ended_at (datetime)
++ length (integer, minutes)
 #### foreign keys
 + test_id
 + user_id
@@ -42,8 +46,19 @@ Is created when teacher gives test to student, waiting for his state change
 + id 
 + type (string, enum)
 #### foreign keys
-+ real_question_id
 + test_id
+### polymorphism
++ real_image_id
++ real_image_type
+
+### QuestionResult
++ id
++ state (string: pending, done, result)
++ score (integer)
+
+#### foreign keys
++ question_id
++ user_id
 
 ### QuestionABC
 + id
