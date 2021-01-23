@@ -12,33 +12,44 @@ laravel/php8
 + password
 
 #### foreign keys
-+ class
++ class_id
 
 ### Class
 + id
-+ name
++ name (varchar)
 
 ### Subject
 + id
-+ name
++ name (varchar)
 
 ### Test
 + id
-+ name
++ name (varchar)
 #### foreign keys
-+ subject
-
-### Question
-+ id 
-#### foreign keys
-+ test
++ subject_id
 
 ### TestResult
 Is created when teacher gives test to student, waiting for his state change
 + id
-+ state (pending, done, result)
-+ result (%)
++ state (string: pending, done, result)
++ result (integer)
 + deadline (timestamp)
 #### foreign keys
-+ test
-+ user
++ test_id
++ user_id
+
+### Question
++ id 
++ type (string, enum)
+#### foreign keys
++ real_question_id
++ test_id
+
+### QuestionABC
++ id
++ question (varchar)
++ a (varchar)
++ b (varchar)
++ c (varchar)
++ d (varchar)
++ correct (varchar ('a', 'b', 'c', 'd'))
