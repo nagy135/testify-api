@@ -7,6 +7,30 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /**
+     * login user
+     *
+     * @return Response
+     */
+    public function login(){
+        request()->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::where([
+            'email' => request('email')
+        ])->firstOrFail();
+
+        if ($user->password == request('password'))
+            return response()->json([
+                'status' => 'successful'
+            ]);
+        return response()->json([
+            'status' => 'failed'
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
