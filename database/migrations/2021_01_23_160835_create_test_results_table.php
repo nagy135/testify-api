@@ -25,13 +25,14 @@ class CreateTestResultsTable extends Migration
             $table->dateTime('ended_at');
             $table->integer('length')
                 ->comment('in minutes how long do they have to solve test');
-            $table->timestamps();
 
             $table->unsignedBigInteger('test_id');
             $table->foreign('test_id')->references('id')->on('tests');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->timestamps();
 
         });
     }

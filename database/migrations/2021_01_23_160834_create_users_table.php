@@ -21,10 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('teacher');
             $table->rememberToken();
-            $table->timestamps();
 
-            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('class_id')->nullable();
             $table->foreign('class_id')->references('id')->on('c_classes');
+
+            $table->timestamps();
         });
     }
 

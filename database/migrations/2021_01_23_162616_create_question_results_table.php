@@ -20,13 +20,14 @@ class CreateQuestionResultsTable extends Migration
                   ->comment(implode(',', QuestionResult::STATES));
 
             $table->integer('score');
-            $table->timestamps();
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('test_result_id');
+            $table->foreign('test_result_id')->references('id')->on('test_results');
 
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions');
+
+            $table->timestamps();
         });
     }
 

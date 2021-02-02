@@ -16,6 +16,7 @@ class CreateCClassesTable extends Migration
         Schema::create('c_classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+
             $table->timestamps();
         });
     }

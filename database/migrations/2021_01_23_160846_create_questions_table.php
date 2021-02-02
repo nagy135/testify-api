@@ -15,16 +15,15 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('type')
-                ->comment('string representation of question type');
 
-            // polymorphism
-            $table->integer('real_question_id');
-            $table->string('real_question_type');
+            $table->string('type')
+                ->comment('type of question, each type has specific data jsonb');
+            $table->jsonb('data');
 
             $table->unsignedBigInteger('test_id');
             $table->foreign('test_id')->references('id')->on('tests');
+
+            $table->timestamps();
         });
     }
 

@@ -21,9 +21,10 @@ class CreateJobStatusesTable extends Migration
             $table->string('status', 16)->default(\Imtigger\LaravelJobStatus\JobStatus::STATUS_QUEUED)->index();
             $table->longText('input')->nullable();
             $table->longText('output')->nullable();
-            $table->timestamps();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
+
+            $table->timestamps();
         });
     }
 
