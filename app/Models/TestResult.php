@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestResult extends Model
 {
+    use HasFactory;
+
+    protected $guarded = ['id'];
+
     public const STATE_PENDING = 1;
     public const STATE_DONE = 2;
     public const STATE_RESULT = 3;
@@ -15,5 +19,5 @@ class TestResult extends Model
         self::STATE_DONE => 'done',
         self::STATE_RESULT => 'result',
     ];
-    use HasFactory;
+
 }

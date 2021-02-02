@@ -9,6 +9,8 @@ class QuestionResult extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public const STATE_PENDING = 1;
     public const STATE_DONE = 2;
     public const STATE_RESULT = 3;

@@ -9,7 +9,5 @@ class Question extends Model
 {
     use HasFactory;
 
-    public function real_image(){
-        return $this->morphTo();
-    }
+    protected $guarded = ['id'];
 }
