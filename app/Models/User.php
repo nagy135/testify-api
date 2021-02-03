@@ -35,4 +35,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // RELATIONS
+
+    public function schools(){
+        return $this->belongsToMany(School::class, 'user_school', 'user_id', 'school_id');
+    }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
+    }
 }
