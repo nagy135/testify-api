@@ -10,4 +10,10 @@ class Subject extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    // RELATIONS
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

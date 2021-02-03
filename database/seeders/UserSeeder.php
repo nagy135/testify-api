@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\School;
+use App\Models\Subject;
 
 class UserSeeder extends Seeder
 {
@@ -15,7 +17,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $school = School::first();
+        $subject = Subject::first();
+
+        $teacher = User::create([
            'first_name' => 'Viktor', 
            'last_name' => 'Teacher', 
            'email' => 'teacher@gmail.com',
@@ -23,7 +28,10 @@ class UserSeeder extends Seeder
            'teacher' => true
         ]);
 
-        User::create([
+        $teacher->schools()->attach($school->id);
+        $teacher->subjects()->attach($subject->id);
+
+        $student = User::create([
            'first_name' => 'Bublinka', 
            'last_name' => 'Student', 
            'email' => 'student@gmail.com',
@@ -31,5 +39,7 @@ class UserSeeder extends Seeder
            'teacher' => false,
            'class_id' => 1
         ]);
+        $student->schools()->attach($school->id);
+        $student->subjects()->attach($subject->id);
     }
 }
