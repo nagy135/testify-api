@@ -1,0 +1,6 @@
+{
+    "type": "yesNo",
+    "question": "Does bla contain 'a'?",
+    "answer": 1,
+    "points": 3
+}
