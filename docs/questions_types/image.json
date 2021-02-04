@@ -1,0 +1,18 @@
+{
+    "type": "image",
+    "image": "https://blabla.sk/image.png",
+    "description": "In this image of blabla describe parts",
+    "subQuestions": [
+        {
+            "question": "Small description to subquestion(optional)",
+            "answer": "Abdominal muscle",
+            "maxPoints": 2
+        },
+        {
+            "question": "Small description to subquestion(optional)",
+            "answer": "Abdominal muscle",
+            "maxPoints": 2
+        }
+    ],
+    "points": 7
+}
