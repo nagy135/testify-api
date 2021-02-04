@@ -19,4 +19,10 @@ class School extends Model
             'teacher' => true
         ])->get();
     }
+
+    public function students(){
+        return $this->users()->where([
+            'teacher' => false
+        ])->get();
+    }
 }

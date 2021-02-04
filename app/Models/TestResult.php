@@ -20,4 +20,13 @@ class TestResult extends Model
         self::STATE_RESULT => 'result',
     ];
 
+    // RELATIONS
+
+    public function questionResults(){
+        return $this->hasMany(QuestionResult::class);
+    }
+
+    public function test(){
+        return $this->belongsTo(Test::class);
+    }
 }

@@ -14,4 +14,10 @@ class Question extends Model
     protected $casts = [
         'data' => 'array'
     ];
+
+    // RELATIONS
+
+    public function test(){
+        return $this->belongsTo(Test::class);
+    }
 }

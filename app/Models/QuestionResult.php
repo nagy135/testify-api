@@ -19,4 +19,14 @@ class QuestionResult extends Model
         self::STATE_DONE => 'done',
         self::STATE_RESULT => 'result',
     ];
+
+    // RELATIONS
+
+    public function testResult(){
+        return $this->belongsTo(TestResult::class);
+    }
+
+    public function question(){
+        return $this->belongsTo(Question::class);
+    }
 }

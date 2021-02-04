@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function subjects(){
         return $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
     }
+
+    public function class(){
+        return $this->belongsTo(CClass::class);
+    }
 }
