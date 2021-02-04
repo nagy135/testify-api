@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
         $subject = Subject::first();
 
         $teacher = User::create([
-           'first_name' => 'Viktor', 
-           'last_name' => 'Teacher', 
+           'first_name' => 'Viktor',
+           'last_name' => 'Teacher',
            'email' => 'teacher@gmail.com',
            'password' => Hash::make('asdfasdf'),
            'teacher' => true
@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
         $teacher->subjects()->attach($subject->id);
 
         $student = User::create([
-           'first_name' => 'Bublinka', 
-           'last_name' => 'Student', 
+           'first_name' => 'Bublinka',
+           'last_name' => 'Student',
            'email' => 'student@gmail.com',
            'password' => Hash::make('asdfasdf'),
            'teacher' => false,
@@ -41,5 +41,13 @@ class UserSeeder extends Seeder
         ]);
         $student->schools()->attach($school->id);
         $student->subjects()->attach($subject->id);
+
+        // create superadmin
+        User::create([
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
+            'email' => 'superadmin@testify.com',
+            'password' => Hash::make('asdfasdf'),
+        ]);
     }
 }

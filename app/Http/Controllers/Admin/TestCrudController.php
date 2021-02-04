@@ -71,7 +71,7 @@ class TestCrudController extends CrudController
        /**
         * questions tab
         */
-       Crud::field('questions')->tab('questions');
+       Crud::field('questions')->type('questions')->tab('questions');
     }
 
     /**
