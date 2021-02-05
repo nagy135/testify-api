@@ -1,7 +1,8 @@
 <div class="image">
+    <h3>Options</h3>
     <div class="row">
         <div class="col-3">
-            <label for="image-file">File</label>
+            <label for="image-file">Image</label>
         </div>
         <div class="col-9">
             <input type="file" name="image-file" id="image-file"/>
@@ -20,10 +21,10 @@
             <label for="image-points">Points</label>
         </div>
         <div class="col-2">
-            <input type="text" name="image-points" id="image-points"/>
+            <input type="number" name="image-points" id="image-points"/>
         </div>
     </div>
-    <hr>
+    <h3>Subquestions</h3>
     <div class="subquestions">
         <div class="subquestion">
             <div class="row">
@@ -52,7 +53,7 @@
             </div>
             <div class="row">
                 <div class="col-3">
-                    <button class="btn btn-secondary remove-image-subquestion">Delete</button>
+                    <button class="btn btn-error remove-image-subquestion">Delete</button>
                 </div>
             </div>
             <hr>

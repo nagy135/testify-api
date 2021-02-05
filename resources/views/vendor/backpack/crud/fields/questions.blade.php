@@ -56,7 +56,7 @@
                     "Yes/No",
                 ];
 
-                $("#add-question").click(function () {
+                $("#add-question").click(function() {
                     let type = $("#question-types").val();
                     $('.question-type-creators').children().hide();
                     $('.' + questionTypeMapping[type]).show();
@@ -71,6 +71,21 @@
                 $(".remove-image-subquestion").click(function(){
                     if ($('.subquestion').length == 1) return;
                     $(this).closest('.subquestion').remove();
+                });
+                // }
+
+                // multichoice {
+                $("#add-another-multi-choice-answer").click(function(){
+                    let newOne = $('.multi-choice-answer-wrapper').last().clone(true);
+                    let count = $('.multi-choice-answer-wrapper').length;
+                    newOne.find('.form-check-input').each(function(){
+                        $(this).attr('name', 'multi-choice-answers-' + count);
+                    })
+                    $('.multi-choice-answers').append(newOne);
+                });
+                $(".remove-multi-choice-answer").click(function(){
+                    if ($('.multi-choice-answer-wrapper').length == 1) return;
+                    $(this).closest('.multi-choice-answer-wrapper').remove();
                 });
                 // }
             });
