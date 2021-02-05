@@ -50,10 +50,15 @@
                     <input type="number" name="image-subquestion-points" class="image-subquestion-points"/>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-secondary remove-image-subquestion">Delete</button>
+                </div>
+            </div>
             <hr>
         </div>
     </div>
     <div>
-        <button class="btn btn-secondary" id="add-another-image-subquestion">Add another</button>
+        <button class="btn btn-primary" id="add-another-image-subquestion">Add another</button>
     </div>
 </div>

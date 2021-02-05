@@ -48,17 +48,31 @@
                     "question-answer",
                     "yes-no",
                 ];
+                let questionTitleMapping = [
+                    "Multi Choice",
+                    "Drag/Join",
+                    "Image",
+                    "Question/Answer",
+                    "Yes/No",
+                ];
 
                 $("#add-question").click(function () {
                     let type = $("#question-types").val();
                     $('.question-type-creators').children().hide();
                     $('.' + questionTypeMapping[type]).show();
+                    $('#addQuestionModal h5.modal-title').html(questionTitleMapping[type]);
                 });
 
+                // image {
                 $("#add-another-image-subquestion").click(function(){
-                    let newOne = $('.subquestion').last().clone();
+                    let newOne = $('.subquestion').last().clone(true);
                     $('.subquestions').append(newOne);
                 });
+                $(".remove-image-subquestion").click(function(){
+                    if ($('.subquestion').length == 1) return;
+                    $(this).closest('.subquestion').remove();
+                });
+                // }
             });
         </script>
     @endpush
