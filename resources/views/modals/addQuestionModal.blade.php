@@ -1,4 +1,4 @@
-<div id="addQuestionModal" class="modal modal-lg" tabindex="-1" role="dialog">
+<div id="addQuestionModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

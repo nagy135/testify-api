@@ -6,8 +6,7 @@
         <select class="form-control" id="question-types">
             @foreach(\App\Models\Question::TYPES as $key => $type)
                 <option value="{{ $key }}">{{ $type }}</option>
-            @endforeach
-        </select>
+            @endforeach </select>
     </div>
     <div class="col-md">
         <button id="add-question" type="button" class="btn btn-primary" data-toggle="modal"
@@ -54,7 +53,11 @@
                     let type = $("#question-types").val();
                     $('.question-type-creators').children().hide();
                     $('.' + questionTypeMapping[type]).show();
-                    console.log('.question-type-creators .' + questionTypeMapping[type]);
+                });
+
+                $("#add-another-image-subquestion").click(function(){
+                    let newOne = $('.subquestion').last().clone();
+                    $('.subquestions').append(newOne);
                 });
             });
         </script>
