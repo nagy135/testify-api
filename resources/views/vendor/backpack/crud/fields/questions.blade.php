@@ -10,7 +10,7 @@
     </div>
     <div class="col-md">
         <button id="add-question" type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#addQuestionModal">
+                data-target="#add-question-modal">
             Add
         </button>
     </div>
@@ -60,7 +60,11 @@
                     let type = $("#question-types").val();
                     $('.question-type-creators').children().hide();
                     $('.' + questionTypeMapping[type]).show();
-                    $('#addQuestionModal h5.modal-title').html(questionTitleMapping[type]);
+                    $('#add-question-modal h5.modal-title').html(questionTitleMapping[type]);
+                });
+
+                $("#add-question-modal button.add-question-save").click(function(){
+                    $('#add-question-modal').modal('hide');
                 });
 
                 // image {

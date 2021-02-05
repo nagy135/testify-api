@@ -1,4 +1,4 @@
-<div id="addQuestionModal" class="modal" tabindex="-1" role="dialog">
+<div id="add-question-modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,7 +15,7 @@
                 @include('components.questions.yesNo')
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary add-question-save">Save Question</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
