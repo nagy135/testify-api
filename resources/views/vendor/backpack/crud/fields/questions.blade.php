@@ -144,6 +144,44 @@
                 });
                 // }
 
+                // dragJoin {
+
+                function dragJoinFixLabels(type){
+                    let q = '.drag-join-answer-label';
+                    if (type == 'questions')
+                        q = '.drag-join-question-label';
+                    $(q).each(function(e){
+                        $(this).html('#' + (e+1));
+                    });
+                };
+
+
+                $(".remove-drag-join-question").click(function(){
+                    if ($('.drag-join-question-wrapper').length == 1) return;
+                    $(this).closest('.drag-join-question-wrapper').remove();
+                    dragJoinFixLabels('questions');
+                });
+
+                $(".remove-drag-join-answer").click(function(){
+                    if ($('.drag-join-answer-wrapper').length == 1) return;
+                    $(this).closest('.drag-join-answer-wrapper').remove();
+                    dragJoinFixLabels('answers');
+                });
+
+                $("#add-another-drag-join-question").click(function(){
+                    let newOne = $('.drag-join-question-wrapper').last().clone(true);
+                    $('.drag-join-questions').append(newOne);
+                    dragJoinFixLabels('questions');
+                });
+
+                $("#add-another-drag-join-answer").click(function(){
+                    let newOne = $('.drag-join-answer-wrapper').last().clone(true);
+                    $('.drag-join-answers').append(newOne);
+                    dragJoinFixLabels('answers');
+                });
+
+                // }
+
                 // multichoice {
                 $("#add-another-multi-choice-answer").click(function(){
                     let newOne = $('.multi-choice-answer-wrapper').last().clone(true);
