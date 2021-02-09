@@ -108,7 +108,7 @@
                             '<tr>' +
                                 '<th scope="row">' + (i+1) + '</th>' +
                                 '<td>' + e.type + '</td>' +
-                                '<td>' + e.type + '</td>' +
+                                '<td>' + e.points + '</td>' +
                                 '<td><button type="button" data-id="' + i + '" class="btn btn-sm btn-error questions-table-delete-row">Delete</button></td>' +
                             '</tr>'
                         );
@@ -129,19 +129,35 @@
                 };
                 function newImageQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name')] = $(this).val();
+                        let key = $(this).attr('name').replace(/^image-/, "");
+                        if (key in newQuestion)
+                            newQuestion[key].push($(this).val());
+                        else
+                            newQuestion[key] = [$(this).val()];
                     });
+                    newQuestion["subQuestions"] = [];
+                    for (var i=0; i<newQuestion["subquestion-points"].length; i++){
+                        newQuestion["subQuestions"].push({
+                            question: newQuestion['subquestion-question'][i],
+                            answer: newQuestion['subquestion-answer'][i],
+                            points: parseInt(newQuestion['subquestion-points'][i]),
+                        });
+                    }
+                    delete newQuestion["subquestion-question"];
+                    delete newQuestion["subquestion-answer"];
+                    delete newQuestion["subquestion-points"];
+
                     return newQuestion;
                 };
                 function newQuestionAnswerQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name')] = $(this).val();
+                        newQuestion[$(this).attr('name').replace(/^question-answer-/, "")] = $(this).val();
                     });
                     return newQuestion;
                 };
                 function newYesNoQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name')] = $(this).val();
+                        newQuestion[$(this).attr('name').replace(/^yes-no-/, "")] = $(this).val();
                     });
                     return newQuestion;
                 };

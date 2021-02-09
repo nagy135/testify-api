@@ -13,11 +13,11 @@
         </div>
         <div class="col-9">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="yes-no-answers" type="radio" id="yes-no-answer-yes" value="yes">
+                <input class="form-check-input" name="yes-no-answer" type="radio" id="yes-no-answer-yes" value="yes">
                 <label class="form-check-label" for="yes-no-answer-yes">Yes</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="yes-no-answers" type="radio" id="yes-no-answer-no" value="no">
+                <input class="form-check-input" name="yes-no-answer" type="radio" id="yes-no-answer-no" value="no">
                 <label class="form-check-label" for="yes-no-answer-no">No</label>
             </div>
         </div>
