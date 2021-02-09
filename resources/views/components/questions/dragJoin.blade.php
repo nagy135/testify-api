@@ -31,21 +31,17 @@
                     <div class="drag-join-questions">
                         <div class="drag-join-question-wrapper">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-1">
                                     <strong class='drag-join-question-label'>#1</strong>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-9">
+                                <div class="col-5">
                                     <input type="text" name="drag-join-question-text" class="drag-join-question-text"/>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-9">
+                                <div class="col-5">
                                     <input type="file" name="drag-join-question-image" class="drag-join-question-image"/>
                                 </div>
-                                <div class="col-3">
-                                    <button class="btn btn-error remove-drag-join-question">Delete</button>
+                                <div class="col-1 p-0">
+                                    <button class="btn btn-error remove-drag-join-question">X</button>
                                 </div>
                             </div>
                             <hr>
@@ -71,21 +67,17 @@
                     <div class="drag-join-answers">
                         <div class="drag-join-answer-wrapper">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-1">
                                     <strong class='drag-join-answer-label'>#1</strong>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-9">
+                                <div class="col-5">
                                     <input type="text" name="drag-join-answer-text" class="drag-join-answer-text"/>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-9">
+                                <div class="col-5">
                                     <input type="file" name="drag-join-answer-image" class="drag-join-answer-image"/>
                                 </div>
-                                <div class="col-3">
-                                    <button class="btn btn-error remove-drag-join-answer">Delete</button>
+                                <div class="col-1 p-0">
+                                    <button class="btn btn-error remove-drag-join-answer">X</button>
                                 </div>
                             </div>
                             <hr>
@@ -111,28 +103,19 @@
                     <div class="drag-join-joins">
                         <div class="drag-join-join-wrapper">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-1">
                                     <strong class='drag-join-join-label'>#1</strong>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-5">
-                                    <select class="form-control form-control-sm drag-join-question-join" name="drag-join-question-join">
-                                    </select>
+                                    <input class="form-control form-control-sm drag-join-question-join" type="text" name="drag-join-question-join" readonly/>
                                 </div>
-                                <div class="col-5">
-                                    <select class="form-control form-control-sm drag-join-answer-join" name="drag-join-answer-join">
+                                <div class="col-6">
+                                    <select class="form-control form-control-sm drag-join-answer-join" name="drag-join-answer-join" multiple size="3">
                                     </select>
-                                </div>
-                                <div class="col-2">
-                                    <button class="btn btn-sm btn-error remove-drag-join-join">Delete</button>
                                 </div>
                             </div>
                             <hr>
                         </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" id="add-another-drag-join-join">Add another Join</button>
                     </div>
                 </div>
             </div>

@@ -38,6 +38,13 @@
             .btn-link:focus {
                 text-decoration: none;
             }
+            #drag-join-accordion input {
+                width: 100%;
+                overflow: hidden;
+            }
+            #drag-join-accordion strong {
+                overflow-wrap: normal;
+            }
         </style>
     @endpush
 
@@ -176,17 +183,13 @@
                         answers.push($(this).val());
                     });
                     // populate selects
-                    $('.drag-join-question-join').each(function(){
-                        let questionSelect = $(this);
-                        questionSelect.html('');
-                        questions.forEach(function(e,i){
-                            questionSelect.append(
-                                '<option value="' + i + '">' +
-                                e +
-                                '</option>'
-                            );
-                        });
-                    })
+                    let newOne = $('.drag-join-join-wrapper').last().clone(true);
+                    $('.drag-join-join-wrapper').remove();
+                    questions.forEach(function(e,i){
+                        let newOneInner = newOne.clone(true);
+                        newOneInner.find('.drag-join-question-join').val(e);
+                        $('.drag-join-joins').append(newOneInner);
+                    });
                     $('.drag-join-answer-join').each(function(){
                         let answerSelect = $(this);
                         answerSelect.html('');
@@ -198,6 +201,7 @@
                             );
                         });
                     })
+                    dragJoinFixLabels('joins');
                 });
 
                 $(".remove-drag-join-question").click(function(){
@@ -212,12 +216,6 @@
                     dragJoinFixLabels('answers');
                 });
 
-                $(".remove-drag-join-join").click(function(){
-                    if ($('.drag-join-join-wrapper').length == 1) return;
-                    $(this).closest('.drag-join-join-wrapper').remove();
-                    dragJoinFixLabels('joins');
-                });
-
                 $("#add-another-drag-join-question").click(function(){
                     let newOne = $('.drag-join-question-wrapper').last().clone(true);
                     $('.drag-join-questions').append(newOne);
@@ -228,12 +226,6 @@
                     let newOne = $('.drag-join-answer-wrapper').last().clone(true);
                     $('.drag-join-answers').append(newOne);
                     dragJoinFixLabels('answers');
-                });
-
-                $("#add-another-drag-join-join").click(function(){
-                    let newOne = $('.drag-join-join-wrapper').last().clone(true);
-                    $('.drag-join-joins').append(newOne);
-                    dragJoinFixLabels('joins');
                 });
                 // }
 
