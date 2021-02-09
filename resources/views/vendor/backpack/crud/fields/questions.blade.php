@@ -180,9 +180,9 @@
                     });
                     for(var i=0; i<questions.length; i++) {
                         if(questions[i] === ""){
-                            alert('Some questions have empty name!')
-                            $("$drag-join-accordion").collapse('hide');
-                            return;
+                            alert('Some questions have empty name!');
+                            $("#drag-join-collapse-questions").collapse('show');
+                            return false;
                         }
                     }
                     let answers = [];
@@ -191,9 +191,9 @@
                     });
                     for(var i=0; i<answers.length; i++) {
                         if(answers[i] === ""){
-                            alert('Some answers have empty name!')
-                            $("$drag-join-accordion").collapse('hide');
-                            return;
+                            alert('Some answers have empty name!');
+                            $("#drag-join-collapse-answers").collapse('show');
+                            return false;
                         }
                     }
                     // populate selects
