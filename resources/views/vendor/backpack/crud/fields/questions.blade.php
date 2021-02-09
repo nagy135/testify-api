@@ -31,7 +31,14 @@
     {{-- FIELD EXTRA CSS  --}}
     {{-- push things in the after_styles section --}}
     @push('crud_fields_styles')
-
+        <style type="text/css" media="screen">
+            .btn:focus {
+                box-shadow: none;
+            }
+            .btn-link:focus {
+                text-decoration: none;
+            }
+        </style>
     @endpush
 
     {{-- FIELD EXTRA JS --}}
@@ -150,11 +157,12 @@
                     let q = '.drag-join-answer-label';
                     if (type == 'questions')
                         q = '.drag-join-question-label';
+                    else if (type == 'joins')
+                        q = '.drag-join-join-label';
                     $(q).each(function(e){
                         $(this).html('#' + (e+1));
                     });
                 };
-
 
                 $(".remove-drag-join-question").click(function(){
                     if ($('.drag-join-question-wrapper').length == 1) return;
@@ -166,6 +174,12 @@
                     if ($('.drag-join-answer-wrapper').length == 1) return;
                     $(this).closest('.drag-join-answer-wrapper').remove();
                     dragJoinFixLabels('answers');
+                });
+
+                $(".remove-drag-join-join").click(function(){
+                    if ($('.drag-join-join-wrapper').length == 1) return;
+                    $(this).closest('.drag-join-join-wrapper').remove();
+                    dragJoinFixLabels('joins');
                 });
 
                 $("#add-another-drag-join-question").click(function(){
@@ -180,6 +194,11 @@
                     dragJoinFixLabels('answers');
                 });
 
+                $("#add-another-drag-join-join").click(function(){
+                    let newOne = $('.drag-join-join-wrapper').last().clone(true);
+                    $('.drag-join-joins').append(newOne);
+                    dragJoinFixLabels('joins');
+                });
                 // }
 
                 // multichoice {

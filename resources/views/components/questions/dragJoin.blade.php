@@ -16,59 +16,126 @@
             <input type="number" name="drag-join-points" id="drag-join-points"/>
         </div>
     </div>
-    <h3>Questions</h3>
-    <div class="drag-join-questions">
-        <div class="drag-join-question-wrapper">
-            <div class="row">
-                <div class="col-3">
-                    <strong class='drag-join-question-label'>#1</strong>
+    <div id="drag-join-accordion">
+        <div class="card">
+            <div class="card-header" id="drag-join-questions-heading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link drag-join-collapse accordion-button" data-toggle="collapse" data-target="#drag-join-collapse-questions" aria-expanded="true" aria-controls="drag-join-collapse-questions">
+                        Questions
+                    </button>
+                </h5>
+            </div>
+            <div id="drag-join-collapse-questions" class="collapse show" aria-labelledby="drag-join-questions-heading" data-parent="#drag-join-accordion">
+                <div class="card-body">
+                    <h3>Questions</h3>
+                    <div class="drag-join-questions">
+                        <div class="drag-join-question-wrapper">
+                            <div class="row">
+                                <div class="col-3">
+                                    <strong class='drag-join-question-label'>#1</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <input type="text" name="drag-join-question-text" class="drag-join-question-text"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <input type="file" name="drag-join-question-image" class="drag-join-question-image"/>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn btn-error remove-drag-join-question">Delete</button>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" id="add-another-drag-join-question">Add another Question</button>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-9">
-                    <input type="text" name="drag-join-question-text" class="drag-join-question-text"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-9">
-                    <input type="file" name="drag-join-question-image" class="drag-join-question-image"/>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-error remove-drag-join-question">Delete</button>
-                </div>
-            </div>
-            <hr>
         </div>
-    </div>
-    <div>
-        <button class="btn btn-primary" id="add-another-drag-join-question">Add another Question</button>
-    </div>
-    <hr>
-    <h3>Answers</h3>
-    <div class="drag-join-answers">
-        <div class="drag-join-answer-wrapper">
-            <div class="row">
-                <div class="col-3">
-                    <strong class='drag-join-answer-label'>#1</strong>
+        <div class="card">
+            <div class="card-header" id="drag-join-answers-heading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link drag-join-collapse collapsed" data-toggle="collapse" data-target="#drag-join-collapse-answers" aria-expanded="false" aria-controls="drag-join-collapse-answers">
+                        Answers
+                    </button>
+                </h5>
+            </div>
+            <div id="drag-join-collapse-answers" class="collapse" aria-labelledby="drag-join-answers-heading" data-parent="#drag-join-accordion">
+                <div class="card-body">
+                    <h3>Answers</h3>
+                    <div class="drag-join-answers">
+                        <div class="drag-join-answer-wrapper">
+                            <div class="row">
+                                <div class="col-3">
+                                    <strong class='drag-join-answer-label'>#1</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <input type="text" name="drag-join-answer-text" class="drag-join-answer-text"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <input type="file" name="drag-join-answer-image" class="drag-join-answer-image"/>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn btn-error remove-drag-join-answer">Delete</button>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" id="add-another-drag-join-answer">Add another Question</button>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-9">
-                    <input type="text" name="drag-join-answer-text" class="drag-join-answer-text"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-9">
-                    <input type="file" name="drag-join-answer-image" class="drag-join-answer-image"/>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-error remove-drag-join-answer">Delete</button>
-                </div>
-            </div>
-            <hr>
         </div>
-    </div>
-    <div>
-        <button class="btn btn-primary" id="add-another-drag-join-answer">Add another Question</button>
+        <div class="card">
+            <div class="card-header" id="drag-join-joins-heading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link drag-join-collapse collapsed" data-toggle="collapse" data-target="#drag-join-collapse-joins" aria-expanded="false" aria-controls="drag-join-collapse-joins">
+                        Joins
+                    </button>
+                </h5>
+            </div>
+            <div id="drag-join-collapse-joins" class="collapse" aria-labelledby="drag-join-joins-heading" data-parent="#drag-join-accordion">
+                <div class="card-body">
+                    <h3>Joins</h3>
+                    <div class="drag-join-joins">
+                        <div class="drag-join-join-wrapper">
+                            <div class="row">
+                                <div class="col-3">
+                                    <strong class='drag-join-join-label'>#1</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5">
+                                    <select class="form-control form-control-sm" name="drag-join-question-join" id="drag-join-question-join" multiple size="1">
+                                    </select>
+                                </div>
+                                <div class="col-5">
+                                    <select class="form-control form-control-sm" name="drag-join-answer-join" id="drag-join-answer-join" multiple size="1">
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn-sm btn-error remove-drag-join-join">Delete</button>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" id="add-another-drag-join-join">Add another Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
