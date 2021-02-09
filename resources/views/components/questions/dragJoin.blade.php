@@ -117,11 +117,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-5">
-                                    <select class="form-control form-control-sm" name="drag-join-question-join" id="drag-join-question-join" multiple size="1">
+                                    <select class="form-control form-control-sm drag-join-question-join" name="drag-join-question-join">
                                     </select>
                                 </div>
                                 <div class="col-5">
-                                    <select class="form-control form-control-sm" name="drag-join-answer-join" id="drag-join-answer-join" multiple size="1">
+                                    <select class="form-control form-control-sm drag-join-answer-join" name="drag-join-answer-join">
                                     </select>
                                 </div>
                                 <div class="col-2">

@@ -163,6 +163,42 @@
                         $(this).html('#' + (e+1));
                     });
                 };
+                // if showing joins, update selects
+                $("#drag-join-accordion").on('show.bs.collapse', function(e){
+                    if (e.target.id != 'drag-join-collapse-joins') return;
+                    // get values
+                    let questions = [];
+                    $('input.drag-join-question-text').each(function(){
+                        questions.push($(this).val());
+                    });
+                    let answers = [];
+                    $('input.drag-join-answer-text').each(function(){
+                        answers.push($(this).val());
+                    });
+                    // populate selects
+                    $('.drag-join-question-join').each(function(){
+                        let questionSelect = $(this);
+                        questionSelect.html('');
+                        questions.forEach(function(e,i){
+                            questionSelect.append(
+                                '<option value="' + i + '">' +
+                                e +
+                                '</option>'
+                            );
+                        });
+                    })
+                    $('.drag-join-answer-join').each(function(){
+                        let answerSelect = $(this);
+                        answerSelect.html('');
+                        answers.forEach(function(e,i){
+                            answerSelect.append(
+                                '<option value="' + i + '">' +
+                                e +
+                                '</option>'
+                            );
+                        });
+                    })
+                });
 
                 $(".remove-drag-join-question").click(function(){
                     if ($('.drag-join-question-wrapper').length == 1) return;
