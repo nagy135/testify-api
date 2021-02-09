@@ -2,18 +2,32 @@
 @include('crud::fields.inc.wrapper_start')
 
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-10 col-sm-12">
         <select class="form-control" id="question-types">
             @foreach(\App\Models\Question::TYPES as $key => $type)
                 <option value="{{ $key }}">{{ $type }}</option>
             @endforeach </select>
     </div>
-    <div class="col-md">
+    <div class="col-md-2 col-sm-12">
         <button id="add-question" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#add-question-modal">
             Add
         </button>
     </div>
+</div>
+<div class="container mt-3">
+    <table class="table table-striped questions-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Question Type</th>
+                <th scope="col">Points</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
 
 {{-- HINT --}}
@@ -84,7 +98,22 @@
                             break;
                     };
                     console.log('updated questions', questions);
+                    updateQuestionTable();
                 };
+
+                function updateQuestionTable(){
+                    $('.questions-table > tbody').html('');
+                    questions.forEach(function(e, i){
+                        $('.questions-table > tbody').append(
+                            '<tr>' +
+                                '<th scope="row">' + (i+1) + '</th>' +
+                                '<td>' + e.type + '</td>' +
+                                '<td>' + e.type + '</td>' +
+                                '<td><button type="button" data-id="' + i + '" class="btn btn-sm btn-error questions-table-delete-row">Delete</button></td>' +
+                            '</tr>'
+                        );
+                    });
+                }
 
                 function newMultiChoiceQuestion(newQuestion, inputs){
                     inputs.each(function(){
@@ -131,6 +160,12 @@
                     "Question/Answer",
                     "Yes/No",
                 ];
+
+                $('.questions-table').on('click', '.questions-table-delete-row', function(e){
+                    e.preventDefault();
+                    questions.splice(parseInt($(this).data('id')), 1);
+                    updateQuestionTable();
+                });
 
                 // add new question with selected type
                 $("#add-question").click(function() {
