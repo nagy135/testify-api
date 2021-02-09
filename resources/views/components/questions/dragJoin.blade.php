@@ -31,16 +31,16 @@
                     <div class="drag-join-questions">
                         <div class="drag-join-question-wrapper">
                             <div class="row">
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-12">
                                     <strong class='drag-join-question-label'>#1</strong>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-md-5 col-sm-12">
                                     <input type="text" name="drag-join-question-text" class="drag-join-question-text"/>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-md-4 col-sm-10">
                                     <input type="file" name="drag-join-question-image" class="drag-join-question-image"/>
                                 </div>
-                                <div class="col-1 p-0">
+                                <div class="col-md-2 col-sm-2">
                                     <button class="btn btn-error remove-drag-join-question">X</button>
                                 </div>
                             </div>
@@ -67,16 +67,16 @@
                     <div class="drag-join-answers">
                         <div class="drag-join-answer-wrapper">
                             <div class="row">
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-12">
                                     <strong class='drag-join-answer-label'>#1</strong>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-md-5 col-sm-12">
                                     <input type="text" name="drag-join-answer-text" class="drag-join-answer-text"/>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-md-4 col-sm-10">
                                     <input type="file" name="drag-join-answer-image" class="drag-join-answer-image"/>
                                 </div>
-                                <div class="col-1 p-0">
+                                <div class="col-md-2 col-sm-2">
                                     <button class="btn btn-error remove-drag-join-answer">X</button>
                                 </div>
                             </div>
@@ -103,13 +103,13 @@
                     <div class="drag-join-joins">
                         <div class="drag-join-join-wrapper">
                             <div class="row">
-                                <div class="col-1">
+                                <div class="col-md-1 col-sm-12">
                                     <strong class='drag-join-join-label'>#1</strong>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-md-5 col-sm-12">
                                     <input class="form-control form-control-sm drag-join-question-join" type="text" name="drag-join-question-join" readonly/>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-md-6 col-sm-12">
                                     <select class="form-control form-control-sm drag-join-answer-join" name="drag-join-answer-join" multiple size="3">
                                     </select>
                                 </div>

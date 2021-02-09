@@ -178,10 +178,24 @@
                     $('input.drag-join-question-text').each(function(){
                         questions.push($(this).val());
                     });
+                    for(var i=0; i<questions.length; i++) {
+                        if(questions[i] === ""){
+                            alert('Some questions have empty name!')
+                            $("$drag-join-accordion").collapse('hide');
+                            return;
+                        }
+                    }
                     let answers = [];
                     $('input.drag-join-answer-text').each(function(){
                         answers.push($(this).val());
                     });
+                    for(var i=0; i<answers.length; i++) {
+                        if(answers[i] === ""){
+                            alert('Some answers have empty name!')
+                            $("$drag-join-accordion").collapse('hide');
+                            return;
+                        }
+                    }
                     // populate selects
                     let newOne = $('.drag-join-join-wrapper').last().clone(true);
                     $('.drag-join-join-wrapper').remove();
