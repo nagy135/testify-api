@@ -2,10 +2,10 @@
     <h3>Options</h3>
     <div class="row">
         <div class="col-3">
-            <label for="image-file">Image</label>
+            <label for="image-image">Image</label>
         </div>
         <div class="col-9">
-            <input type="file" name="image-file" id="image-file"/>
+            <input type="file" name="image-image" id="image-image"/>
         </div>
     </div>
     <div class="row">

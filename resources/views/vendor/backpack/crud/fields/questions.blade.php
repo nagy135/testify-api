@@ -141,24 +141,30 @@
                     return newQuestion;
                 };
                 function newImageQuestion(newQuestion, inputs){
+                    let subQuestions = {};
                     inputs.each(function(){
                         let key = $(this).attr('name').replace(/^image-/, "");
-                        if (key in newQuestion)
-                            newQuestion[key].push($(this).val());
-                        else
-                            newQuestion[key] = [$(this).val()];
+                        let value = $(this).val();
+                        console.log(key, value);
+                        if (!key.startsWith('subquestion')){
+                            if (key == 'points') value = parseInt(value);
+                            newQuestion['data'][key] = value;
+                        } else {
+                            if (key in subQuestions)
+                                subQuestions[key].push(value);
+                            else
+                                subQuestions[key] = [value];
+                        }
                     });
-                    newQuestion["subQuestions"] = [];
-                    for (var i=0; i<newQuestion["subquestion-points"].length; i++){
-                        newQuestion["subQuestions"].push({
-                            question: newQuestion['subquestion-question'][i],
-                            answer: newQuestion['subquestion-answer'][i],
-                            points: parseInt(newQuestion['subquestion-points'][i]),
+
+                    newQuestion['data']['subQuestions'] = [];
+                    for (var i=0; i<subQuestions["subquestion-points"].length; i++){
+                        newQuestion['data']["subQuestions"].push({
+                            question: subQuestions['subquestion-question'][i],
+                            answer: subQuestions['subquestion-answer'][i],
+                            maxPoints: parseInt(subQuestions['subquestion-points'][i]),
                         });
                     }
-                    delete newQuestion["subquestion-question"];
-                    delete newQuestion["subquestion-answer"];
-                    delete newQuestion["subquestion-points"];
 
                     return newQuestion;
                 };
