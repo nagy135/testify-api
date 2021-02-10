@@ -30,6 +30,7 @@
     </table>
 </div>
 
+
 {{-- HINT --}}
 @if (isset($field['hint']))
     <p class="help-block">{!! $field['hint'] !!}</p>
@@ -71,11 +72,23 @@
             $(document).ready(function () {
                 // holds objects of data field later stored as models
                 let questions = [];
-
+                @foreach ($entry->questions as $question)
+                    var question = @json($question);
+                    questions.push({
+                        type: question.type,
+                        data: question.data
+                    });
+                @endforeach
+                console.log(questions);
+                updateQuestionTable();
                 // creates another question object for later saving
+
+                const snakeToCamel = str => str.replace(/([-_]\w)/g, g => g[1].toUpperCase());
+
                 function createQuestionHandler(type){
                     let newQuestion = {
-                        type: type
+                        type: snakeToCamel(type),
+                        data: {}
                     };
                     let inputs = $("." + type).find('input');
 
@@ -108,7 +121,7 @@
                             '<tr>' +
                                 '<th scope="row">' + (i+1) + '</th>' +
                                 '<td>' + e.type + '</td>' +
-                                '<td>' + e.points + '</td>' +
+                                '<td>' + e.data.points + '</td>' +
                                 '<td><button type="button" data-id="' + i + '" class="btn btn-sm btn-error questions-table-delete-row">Delete</button></td>' +
                             '</tr>'
                         );
@@ -117,13 +130,13 @@
 
                 function newMultiChoiceQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name')] = $(this).val();
+                        newQuestion[$(this).attr('name').replace(/^multi-choice-/, "")] = $(this).val();
                     });
                     return newQuestion;
                 };
                 function newDragJoinQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name')] = $(this).val();
+                        newQuestion[$(this).attr('name').replace(/^drag-join-/, "")] = $(this).val();
                     });
                     return newQuestion;
                 };
@@ -157,7 +170,14 @@
                 };
                 function newYesNoQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name').replace(/^yes-no-/, "")] = $(this).val();
+                        let key = $(this).attr('name').replace(/^yes-no-/, "");
+                        let value = $(this).val();
+                        if (key == 'answer'){
+                            value = 0;
+                            if (value == "yes") value = 1;
+                        } else if (key == 'points')
+                            value = parseInt(value);
+                        newQuestion['data'][key] = value;
                     });
                     return newQuestion;
                 };
