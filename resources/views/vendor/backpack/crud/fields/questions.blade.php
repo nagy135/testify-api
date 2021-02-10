@@ -164,7 +164,11 @@
                 };
                 function newQuestionAnswerQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name').replace(/^question-answer-/, "")] = $(this).val();
+                        let key = $(this).attr('name').replace(/^question-answer-/, "");
+                        let value = $(this).val();
+                        if (key == 'points')
+                            value = parseInt(value);
+                        newQuestion['data'][key] = value;
                     });
                     return newQuestion;
                 };
