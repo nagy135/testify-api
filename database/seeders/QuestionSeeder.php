@@ -21,14 +21,22 @@ class QuestionSeeder extends Seeder
             'data' => [
                 "question" => "How many bla bla are in bla bla?",
                 "options" => [
-                    "one",
-                    "two",
-                    "three",
-                    "four"
-                ],
-                "answer" => [ 
-                    0,
-                    2
+                    [
+                        "option" => "one",
+                        "answer" => 1
+                    ],
+                    [
+                        "option" => "two",
+                        "answer" => 0
+                    ],
+                    [
+                        "option" => "three",
+                        "answer" => 1
+                    ],
+                    [
+                        "option" => "four",
+                        "answer" => 0
+                    ],
                 ],
                 "points" => 9
             ]

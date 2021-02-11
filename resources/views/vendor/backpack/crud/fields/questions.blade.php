@@ -129,15 +129,44 @@
                 }
 
                 function newMultiChoiceQuestion(newQuestion, inputs){
+                    newQuestion['data']['options'] = [];
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name').replace(/^multi-choice-/, "")] = $(this).val();
+                        let key = $(this).attr('name').replace(/^multi-choice-/, "");
+                        let value = $(this).val();
+                        if (!key.startsWith('answer')){
+                            if (key == 'points') value = parseInt(value);
+                            newQuestion['data'][key] = value;
+                        } else {
+                            if (key == 'answer'){
+                                newQuestion['data']['options'].push({
+                                    option:  value
+                                });
+                            } else { // if true or false
+                                if ($(this).prop('checked')){
+                                    newQuestion['data']['options'][newQuestion['data']['options'].length - 1]['answer']
+                                        = ((value == 'yes') ? 1 : 0);
+                                }
+                            }
+                        }
                     });
                     return newQuestion;
                 };
                 function newDragJoinQuestion(newQuestion, inputs){
                     inputs.each(function(){
-                        newQuestion[$(this).attr('name').replace(/^drag-join-/, "")] = $(this).val();
+                        let key = $(this).attr('name').replace(/^drag-join-/, "");
+                        let value = $(this).val();
+                        console.log(key, value);
+                        if (!key.startsWith('subquestion')){
+                            if (key == 'points') value = parseInt(value);
+                            newQuestion['data'][key] = value;
+                        } else {
+                            if (key in subQuestions)
+                                subQuestions[key].push(value);
+                            else
+                                subQuestions[key] = [value];
+                        }
                     });
+
                     return newQuestion;
                 };
                 function newImageQuestion(newQuestion, inputs){
@@ -145,7 +174,6 @@
                     inputs.each(function(){
                         let key = $(this).attr('name').replace(/^image-/, "");
                         let value = $(this).val();
-                        console.log(key, value);
                         if (!key.startsWith('subquestion')){
                             if (key == 'points') value = parseInt(value);
                             newQuestion['data'][key] = value;
