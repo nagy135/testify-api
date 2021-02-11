@@ -49,54 +49,46 @@ class QuestionSeeder extends Seeder
                 "description" => "Join part of the body with text",
                 "questions" => [
                     [
-                        "content" => "Head",
-                        "type" => "text"
+                        "image" => "https://blabla.com/image.png",
+                        "text" => "Head"
                     ],
                     [
-                        "content" => "https://blabla.com/image.png",
-                        "type" => "link"
+                        "image" => "https://blabla.com/image2.png",
+                        "text" => "Head2"
                     ],
                     [
-                        "content" => "https://blabla.com/image2.png",
-                        "type" => "link"
+                        "image" => "https://blabla.com/image3.png",
+                        "text" => "Head3"
                     ],
                     [
-                        "content" => "Body",
-                        "type" => "text"
+                        "image" => "https://blabla.com/image4.png",
+                        "text" => "Head4"
                     ],
-                    [
-                        "content" => "https://blabla.com/image3.png",
-                        "type" => "link"
-                    ]
                 ],
                 "answers" => [
                     [
-                        "content" => "Head",
-                        "type" => "text"
+                        "image" => "https://blabla.com/image.png",
+                        "text" => "Head"
                     ],
                     [
-                        "content" => "https://blabla.com/image.png",
-                        "type" => "link"
+                        "image" => "https://blabla.com/image2.png",
+                        "text" => "Head2"
                     ],
                     [
-                        "content" => "https://blabla.com/image2.png",
-                        "type" => "link"
+                        "image" => "https://blabla.com/image3.png",
+                        "text" => "Head3"
                     ],
                     [
-                        "content" => "Body",
-                        "type" => "text"
+                        "image" => "https://blabla.com/image4.png",
+                        "text" => "Head4"
                     ],
-                    [
-                        "content" => "https://blabla.com/image3.png",
-                        "type" => "link"
-                    ]
                 ],
                 "joins" => [
-                    [0,4],
                     [1,3],
-                    [4,2],
-                    [3,1],
-                    [2,0]
+                    [1,3,0],
+                    [3,2],
+                    [2,1],
+                    [2]
                 ],
                 "points" => 6
             ]

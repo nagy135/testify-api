@@ -152,20 +152,48 @@
                     return newQuestion;
                 };
                 function newDragJoinQuestion(newQuestion, inputs){
+                    var questions = {
+                        text: [],
+                        image: []
+                    };
+                    var answers = {
+                        text: [],
+                        image: []
+                    };
                     inputs.each(function(){
                         let key = $(this).attr('name').replace(/^drag-join-/, "");
                         let value = $(this).val();
-                        console.log(key, value);
-                        if (!key.startsWith('subquestion')){
+                        if (key == 'question-join') return; // these are handled in select part
+                        if (key.startsWith('question')){
+                            if (key.endsWith('text')) questions.text.push(value);
+                            else questions.image.push(value);
+                        } else if (key.startsWith('answer')){
+                            if (key.endsWith('text')) answers.text.push(value);
+                            else answers.image.push(value);
+                        } else {
                             if (key == 'points') value = parseInt(value);
                             newQuestion['data'][key] = value;
-                        } else {
-                            if (key in subQuestions)
-                                subQuestions[key].push(value);
-                            else
-                                subQuestions[key] = [value];
                         }
                     });
+                    newQuestion['data']['questions'] = [];
+                    for (var i=0; i<questions["text"].length; i++){
+                        newQuestion['data']["questions"].push({
+                            text: questions['text'][i],
+                            image: questions['image'][i]
+                        });
+                    }
+                    newQuestion['data']['answers'] = [];
+                    for (var i=0; i<answers["text"].length; i++){
+                        newQuestion['data']["answers"].push({
+                            text: answers['text'][i],
+                            image: answers['image'][i]
+                        });
+                    }
+                    newQuestion['data']['joins'] = [];
+                    $('.drag-join select').each(function(){
+                        let value = $(this).val();
+                        newQuestion['data']['joins'].push(value.map(e => parseInt(e)));
+                    })
 
                     return newQuestion;
                 };
