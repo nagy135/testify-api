@@ -15,10 +15,28 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class TestCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
+
+    public function store()
+    {
+        $response =  $this->traitStore();
+        $this->handleNewQuestions();
+        return $response;
+    }
+
+    public function update()
+    {
+        $response = $this->traitUpdate();
+        $this->handleNewQuestions();
+        return $response;
+    }
+
+    private function handleNewQuestions(){
+    }
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -46,6 +64,7 @@ class TestCrudController extends CrudController
         CRUD::column('created_at');
         CRUD::column('updated_at');
     }
+    
 
     /**
      * Define what happens when the Create operation is loaded.
