@@ -394,6 +394,18 @@
                     $(this).closest('.multi-choice-answer-wrapper').remove();
                 });
                 // }
+
+                $('button[type="submit"]').closest('form').submit(function(e){
+                    let form = this;
+                    questions.forEach(function(el,i){
+                        console.log('adding', JSON.stringify(el),i);
+                        $("<input />")
+                            .attr("type", "hidden")
+                            .attr("name", "question-" + i)
+                            .attr("value", JSON.stringify(el))
+                            .appendTo(form);
+                    });
+                });
             });
         </script>
     @endpush
