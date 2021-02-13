@@ -22,7 +22,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Question Type</th>
                 <th scope="col">Points</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Operations</th>
             </tr>
         </thead>
         <tbody>
@@ -70,6 +70,15 @@
 
         <script>
             $(document).ready(function () {
+                const snakeToCamel = str => str.replace(/([-_]\w)/g, g => g[1].toUpperCase());
+                const camelToKebab = str => {
+                    return str.split('').map((letter, idx) => {
+                        return letter.toUpperCase() === letter
+                            ? `${idx !== 0 ? '-' : ''}${letter.toLowerCase()}`
+                            : letter;
+                    }).join('');
+                }
+
                 // holds objects of data field later stored as models
                 let questions = [];
                 @foreach ($entry->questions as $question)
@@ -83,11 +92,10 @@
                 updateQuestionTable();
                 // creates another question object for later saving
 
-                const snakeToCamel = str => str.replace(/([-_]\w)/g, g => g[1].toUpperCase());
-
                 function createQuestionHandler(type){
                     let newQuestion = {
                         type: snakeToCamel(type),
+                        snakeType: type,
                         data: {}
                     };
                     let inputs = $("." + type).find('input');
@@ -122,7 +130,8 @@
                                 '<th scope="row">' + (i+1) + '</th>' +
                                 '<td>' + e.type + '</td>' +
                                 '<td>' + e.data.points + '</td>' +
-                                '<td><button type="button" data-id="' + i + '" class="btn btn-sm btn-error questions-table-delete-row">Delete</button></td>' +
+                                '<td><button type="button" data-id="' + i + '" class="btn btn-sm btn-error questions-table-delete-row">Delete</button>' +
+                                '<button type="button" data-type="' + camelToKebab(e.type) + '" data-id="' + i + '" class="btn btn-sm btn-warning questions-table-update-row ml-2">Update</button></td>' +
                             '</tr>'
                         );
                     });
@@ -248,6 +257,13 @@
                     return newQuestion;
                 };
 
+                function setupModal(type){
+                    $('.question-type-creators').children().hide();
+                    $('.' + questionTypeMapping[type]).show();
+                    $('#add-question-modal').data('question-type', questionTypeMapping[type]);
+                    $('#add-question-modal h5.modal-title').html(questionTitleMapping[type]);
+                };
+
                 let questionTypeMapping = [
                     "multi-choice",
                     "drag-join",
@@ -269,13 +285,18 @@
                     updateQuestionTable();
                 });
 
+                $('.questions-table').on('click', '.questions-table-update-row', function(e){
+                    e.preventDefault();
+                    let question = questions[parseInt($(this).data('id'))];
+                    let type = $(this).data('type');
+                    setupModal(questionTypeMapping.indexOf(type));
+                    $('#add-question-modal').modal('show');
+                });
+
                 // add new question with selected type
                 $("#add-question").click(function() {
                     let type = $("#question-types").val();
-                    $('.question-type-creators').children().hide();
-                    $('.' + questionTypeMapping[type]).show();
-                    $('#add-question-modal').data('question-type', questionTypeMapping[type]);
-                    $('#add-question-modal h5.modal-title').html(questionTitleMapping[type]);
+                    setupModal(type);
                 });
 
                 // this is case where question is completed and should be stored
@@ -396,15 +417,11 @@
                 // }
 
                 $('button[type="submit"]').closest('form').submit(function(e){
-                    let form = this;
-                    questions.forEach(function(el,i){
-                        console.log('adding', JSON.stringify(el),i);
-                        $("<input />")
-                            .attr("type", "hidden")
-                            .attr("name", "question-" + i)
-                            .attr("value", JSON.stringify(el))
-                            .appendTo(form);
-                    });
+                    $("<input />")
+                        .attr("type", "hidden")
+                        .attr("name", "payload")
+                        .attr("value", JSON.stringify(questions))
+                        .appendTo(this);
                 });
             });
         </script>

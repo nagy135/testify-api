@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TestRequest;
-use App\Models\Subject;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
+use App\Models\Subject;
+use App\Models\Test;
 /**
  * Class TestCrudController
  * @package App\Http\Controllers\Admin
@@ -35,7 +36,26 @@ class TestCrudController extends CrudController
         return $response;
     }
 
+    
+    /**
+     * recreates all test questions to apply edits
+     *
+     * @return void
+     */
     private function handleNewQuestions(){
+        $questions = json_decode(request('payload', null), true);
+        $id = request('id');
+
+        $test = Test::find($id);
+
+        $test->questions()->delete();
+
+        foreach ($questions as $question)
+            $test->questions()->create([
+                "type" => $question['type'],
+                "test_id" => (int) $id,
+                "data" => $question['data']
+            ]);
     }
 
     /**
@@ -45,7 +65,7 @@ class TestCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Test::class);
+        CRUD::setModel(Test::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/test');
         CRUD::setEntityNameStrings('test', 'tests');
     }
