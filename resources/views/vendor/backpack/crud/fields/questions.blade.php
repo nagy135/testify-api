@@ -68,17 +68,10 @@
     @push('crud_fields_scripts')
         @include('modals.addQuestionModal')
 
+        <script type="text/javascript" src="{{ URL::asset('js/utils.js') }}"></script>
+
         <script>
             $(document).ready(function () {
-                const snakeToCamel = str => str.replace(/([-_]\w)/g, g => g[1].toUpperCase());
-                const camelToKebab = str => {
-                    return str.split('').map((letter, idx) => {
-                        return letter.toUpperCase() === letter
-                            ? `${idx !== 0 ? '-' : ''}${letter.toLowerCase()}`
-                            : letter;
-                    }).join('');
-                }
-
                 // holds objects of data field later stored as models
                 let questions = [];
                 @foreach ($entry->questions as $question)
