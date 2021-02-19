@@ -14,7 +14,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(CClass::all());
     }
 
     /**

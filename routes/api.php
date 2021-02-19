@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +19,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/test', [TestController::class, 'index']);
+Route::get('/subject', [SubjectController::class, 'index']);
+Route::get('/class', [ClassController::class, 'index']);
+Route::get('/question', [QuestionController::class, 'index']);
