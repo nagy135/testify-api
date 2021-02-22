@@ -18,27 +18,6 @@ class TestController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Test  $test
@@ -46,18 +25,7 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Test $test)
-    {
-        //
+        throw new \Exception('Not implemented');
     }
 
     /**
@@ -69,7 +37,7 @@ class TestController extends Controller
      */
     public function update(Request $request, Test $test)
     {
-        //
+        throw new \Exception('Not implemented');
     }
 
     /**
