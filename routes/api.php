@@ -6,6 +6,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\PassportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,8 @@ use App\Http\Controllers\QuestionController;
 |
 */
 
-Route::post('register', 'PassportController@register');
-Route::post('login', 'PassportController@login');
+Route::post('register', [PassportController::class, 'register']);
+Route::post('login', [PassportController::class, 'login']);
 
 //Route::post('/login', [UserController::class, 'login']);
 Route::get('/test', [TestController::class, 'index']);
