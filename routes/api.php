@@ -18,7 +18,10 @@ use App\Http\Controllers\QuestionController;
 |
 */
 
-Route::post('/login', [UserController::class, 'login']);
+Route::post('register', 'PassportController@register');
+Route::post('login', 'PassportController@login');
+
+//Route::post('/login', [UserController::class, 'login']);
 Route::get('/test', [TestController::class, 'index']);
 Route::get('/subject', [SubjectController::class, 'index']);
 Route::get('/class', [ClassController::class, 'index']);
