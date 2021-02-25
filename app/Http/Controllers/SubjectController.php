@@ -37,3 +37,4 @@ class SubjectController extends Controller
     {
         throw new \Exception('Not implemented');
     }
+}
