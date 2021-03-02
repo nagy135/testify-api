@@ -39,3 +39,4 @@ class ClassController extends Controller
     {
         throw new \Exception('Not implemented');
     }
+}

@@ -14,6 +14,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        dd(auth()->user());
         return response()->json(Test::all());
     }
 

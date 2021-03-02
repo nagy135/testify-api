@@ -39,3 +39,4 @@ class QuestionController extends Controller
     {
         throw new \Exception('Not implemented');
     }
+}

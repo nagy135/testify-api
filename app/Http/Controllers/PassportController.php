@@ -47,6 +47,7 @@ class PassportController extends Controller
         ];
 
         if (auth()->attempt($credentials)) {
+            dd(auth()->user()->createToken($request->login));
             $token = auth()->user()->createToken($request->login)->accessToken;
             return response()->json(['token' => $token]);
         } else {
